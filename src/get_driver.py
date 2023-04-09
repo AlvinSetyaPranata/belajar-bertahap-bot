@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import presence_of_element_located
@@ -18,10 +17,19 @@ from selenium.webdriver.support.expected_conditions import presence_of_element_l
 #         print(f'#{i} {elem.text} ({elem.get_attribute("href")})')
 
 
+URLS = {
+    "base_url" : "https://belajarbertahap.com/",
+    "login" : "auth/login",
+    "main_page" : "latihanskd"
+}
 
-driver = webdriver.Firefox()
+FIREFOX_DRIVER = webdriver.Firefox
+CRHOME_DRIVER = webdriver.Chrome
+EXPLORER_DRIVER = webdriver.Ie
+EDGE_DRIVER = webdriver.Edge
 
-driver.get("http://google.com/ncr")
-wait = WebDriverWait(driver, 10)
 
-print(driver)
+def get_url(room):
+    return "".join((URLS["base_url"], URLS[room]))
+
+
